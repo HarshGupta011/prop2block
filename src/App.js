@@ -29,20 +29,9 @@ function App() {
 		// 	"http://localhost:8545"
 		// );
 
-		console.log("||||||||||||||||||||||");
-		console.log("provider: ", provider);
-		console.log("||||||||||||||||||||||");
 		setProvider(provider);
 		const network = await provider.getNetwork();
-		console.log("***************************");
-		console.log("network: ", network);
-		console.log("network.chainId: ", network.chainId);
-		console.log("config: ", config);
-		console.log("***************************");
 
-		console.log("|||||||||||||||||||||||||||");
-		console.log("config[network.chainId]: ", config[network.chainId]);
-		console.log("|||||||||||||||||||||||||||");
 		const propertyNFT = new ethers.Contract(
 			config[network.chainId].propertyNFT.address,
 			PropertyNFT,
