@@ -7,7 +7,7 @@ const tokens = (n) => {
 
 async function main() {
 	// Setup accounts
-	const [buyer, seller, inspector, lender] = await ethers.getSigners();
+	const [buyer, inspector, lender, seller] = await ethers.getSigners();
 
 	// Deploy Real Estate
 	const PropertyNFT = await ethers.getContractFactory("PropertyNFT");
@@ -21,7 +21,7 @@ async function main() {
 		const transaction = await propertyNFT
 			.connect(seller)
 			.mint(
-				`https://ipfs.io/ipfs/QmQVcpsjrA6cr1iJjZAodYwmPekYgbnXGo4DFubJiLc2EB/${
+				`http://bafybeigcxcws4mwd4bdbkk2gehwufy4fyq337jbhuzshqyxstzn47eabpy.ipfs.localhost:8080/${
 					i + 1
 				}.json`
 			);
@@ -52,17 +52,17 @@ async function main() {
 	// Listing properties...
 	let transaction = await escrow
 		.connect(seller)
-		.list(1, buyer.address, tokens(20), tokens(10), 6, 10);
+		.list(1, buyer.address, tokens(0.001), tokens(0.0005), 6, 10);
 	await transaction.wait();
 
 	transaction = await escrow
 		.connect(seller)
-		.list(2, buyer.address, tokens(15), tokens(5), 12, 10);
+		.list(2, buyer.address, tokens(0.001), tokens(0.0004), 12, 10);
 	await transaction.wait();
 
 	transaction = await escrow
 		.connect(seller)
-		.list(3, buyer.address, tokens(10), tokens(5), 24, 10);
+		.list(3, buyer.address, tokens(0.001), tokens(0.0003), 24, 10);
 	await transaction.wait();
 
 	console.log(`Finished.`);

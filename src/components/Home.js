@@ -165,7 +165,7 @@ const Home = ({ home, provider, account, escrow, togglePop }) => {
 	const paymentHandler = async () => {
 		const signer = await provider.getSigner();
 
-		// Convert ETH amount to Wei
+		// Convert POL amount
 		const paymentAmountWei = ethers.utils.parseEther(paymentAmount);
 
 		// Make payment
@@ -205,7 +205,7 @@ const Home = ({ home, provider, account, escrow, togglePop }) => {
 					</p>
 					<p>{home.address}</p>
 
-					<h2>{home.attributes[0].value} ETH</h2>
+					<h2>{home.attributes[0].value} POL</h2>
 
 					{owner ? (
 						<div className="home__owned">
@@ -213,7 +213,7 @@ const Home = ({ home, provider, account, escrow, togglePop }) => {
 								<>
 									<p>
 										Remaining Amount (including interest):{" "}
-										{remainingAmount} ETH
+										{remainingAmount} POL
 									</p>
 									{remainingAmount > 0 && (
 										<div>
@@ -225,7 +225,7 @@ const Home = ({ home, provider, account, escrow, togglePop }) => {
 														e.target.value
 													)
 												}
-												placeholder="Payment amount (ETH)"
+												placeholder="Payment amount (POL)"
 											/>
 											<button onClick={paymentHandler}>
 												Make Payment
@@ -298,7 +298,7 @@ const Home = ({ home, provider, account, escrow, togglePop }) => {
 									<p>Waiting for approval</p>
 								) : (
 									<>
-										<p>Escrow Amount: {escrowAmount} ETH</p>
+										<p>Escrow Amount: {escrowAmount} POL</p>
 										<button
 											className="home__buy"
 											onClick={buyHandler}

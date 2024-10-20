@@ -1,10 +1,18 @@
 {
 	"31337": {
-		"propertyNFT": {
+		"realEstate": {
 			"address": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
 		},
 		"escrow": {
 			"address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+		}
+	},
+	"80002": {
+		"propertyNFT": {
+			"address": "0x79C81DC68498c63EC5dEe84EfcD20Ae85b083D5D"
+		},
+		"escrow": {
+			"address": "0x48b5827c2658968fF2b5310a59dE5B6C8289FeB1"
 		}
 	}
 }
