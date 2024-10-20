@@ -1,0 +1,8 @@
+{
+  "hardhat": {
+    "ethereum": {
+      "host": "http://0.0.0.0:8545",
+      "startBlock": 0
+    }
+  }
+}

@@ -1,5 +1,25 @@
 /* eslint-disable no-undef */
-const hre = require("hardhat");
+// const hre = require("hardhat");
+import { create } from "ipfs-http-client";
+
+// Create an IPFS client instance
+// Replace 'localhost' with your Docker host IP if needed
+const ipfs = create({ url: "http://localhost:5001" });
+
+const folder_address = "QmcAbQotFmF3MrRPfrMBLGsnXiWsUKMUs7S4ZyChWM1Hjb";
+// files_to_mint = ["1.json", "2.json", "3.json"]
+
+async function fetchFromIPFS(cid, i) {
+	console.log(`${cid}/${i + 1}.json`);
+	const content = await ipfs.cat(`${cid}/${i + 1}.json`);
+	let data = "";
+	for await (const chunk of content) {
+		data += new TextDecoder().decode(chunk);
+	}
+	console.log("Raw data from IPFS:");
+	console.log(data);
+	return JSON.parse(data);
+}
 
 const tokens = (n) => {
 	return ethers.utils.parseUnits(n.toString(), "ether");
@@ -27,6 +47,33 @@ async function main() {
 			);
 		await transaction.wait();
 	}
+
+	// for (let i = 0; i < 3; i++) {
+	// 	try {
+	// 		let cid = folder_address
+	// 		const propertyData = await fetchFromIPFS(cid, i)
+
+	// 		const transaction = await propertyNFT
+	// 		.connect(seller)
+	// 		.mint(
+	// 			`http:localhost:8080/ipfs/${cid}`,
+	// 			propertyData.name,
+	// 			propertyData.address,
+	// 			propertyData.description,
+	// 			propertyData.image,
+	// 			propertyData.attributes.find(attr => attr.trait_type === "Purchase Price").value,
+	// 			propertyData.attributes.find(attr => attr.trait_type === "Type of Residence").value,
+	// 			propertyData.attributes.find(attr => attr.trait_type === "Bed Rooms").value,
+	// 			propertyData.attributes.find(attr => attr.trait_type === "Bathrooms").value,
+	// 			propertyData.attributes.find(attr => attr.trait_type === "Square Feet").value,
+	// 			propertyData.attributes.find(attr => attr.trait_type === "Year Built").value
+	// 		);
+	// 		await transaction.wait();
+	// 		console.log(`Minted property ${i + 1}`);
+	// 	} catch (error) {
+	// 		console.error(`Error minting property ${i + 1}:`, error);
+	// 	  }
+	// }
 
 	// Deploy Escrow
 	const Escrow = await ethers.getContractFactory("Escrow");

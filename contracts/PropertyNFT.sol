@@ -9,15 +9,50 @@ contract PropertyNFT is ERC721URIStorage {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
+    event PropertyAddedToChain(
+        uint256 indexed tokenId,
+        address indexed owner,
+        string tokenURI,
+        string name,
+        string propertyAddress,
+        string description,
+        string image,
+        uint256 purchasePrice,
+        string residenceType,
+        uint256 bedrooms,
+        uint256 bathrooms,
+        uint256 squareFeet,
+        uint256 yearBuilt,
+        uint256 timestamp
+    );
+
     constructor() ERC721("Property NFT", "PRP") {}
 
-    function mint(string memory tokenURI) public returns (uint256) {
+    function mint(
+        string memory tokenURI
+    ) public returns (uint256) {
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();
         _mint(msg.sender, newItemId);
         _setTokenURI(newItemId, tokenURI);
 
+        // emit PropertyAddedToChain(
+        //     newItemId,
+        //     msg.sender,
+        //     tokenURI,
+        //     name,
+        //     propertyAddress,
+        //     description,
+        //     image,
+        //     purchasePrice,
+        //     residenceType,
+        //     bedrooms,
+        //     bathrooms,
+        //     squareFeet,
+        //     yearBuilt,
+        //     block.timestamp
+        // );
         return newItemId;
     }
 
