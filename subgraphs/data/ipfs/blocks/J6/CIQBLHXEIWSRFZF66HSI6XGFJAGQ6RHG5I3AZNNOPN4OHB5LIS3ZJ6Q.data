@@ -1,0 +1,48 @@
+
+âÅdataSources:
+  - kind: ethereum/contract
+    mapping:
+      abis:
+        - file:
+            /: /ipfs/QmXkYThTttbw8f1XKRCa39RoArABGRy3gE7g2ahzp5RC5Y
+          name: Contract
+      apiVersion: 0.0.7
+      entities:
+        - Approval
+        - ApprovalForAll
+        - BatchMetadataUpdate
+        - MetadataUpdate
+        - Transfer
+        - Home
+      eventHandlers:
+        - event: 'Approval(indexed address,indexed address,indexed uint256)'
+          handler: handleApproval
+        - event: 'ApprovalForAll(indexed address,indexed address,bool)'
+          handler: handleApprovalForAll
+        - event: 'BatchMetadataUpdate(uint256,uint256)'
+          handler: handleBatchMetadataUpdate
+        - event: MetadataUpdate(uint256)
+          handler: handleMetadataUpdate
+        - event: 'Transfer(indexed address,indexed address,indexed uint256)'
+          handler: handleTransfer
+        - event: >-
+            PropertyAddedToChain(indexed uint256,indexed
+            address,string,string,string,string,string,uint256,string,uint256,uint256,uint256,uint256,uint256)
+          handler: handlePropertyAdditionToChain
+      file:
+        /: /ipfs/QmRuocxbvYMfogW9WvQYBemznUWeTB4tynout87jEUNeN2
+      kind: ethereum/events
+      language: wasm/assemblyscript
+    name: Contract
+    network: hardhat
+    source:
+      abi: Contract
+      address: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0'
+      startBlock: 0
+indexerHints:
+  prune: auto
+schema:
+  file:
+    /: /ipfs/QmSKCuFSAW8c4XRB8tzunpcHiNTdRY3yPhpKpDi2nH8VAQ
+specVersion: 1.0.0
+Å

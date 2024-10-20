@@ -288,56 +288,6 @@
         "internalType": "string",
         "name": "tokenURI",
         "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "name",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "propertyAddress",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "description",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "image",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "purchasePrice",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "residenceType",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "bedrooms",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "bathrooms",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "squareFeet",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "yearBuilt",
-        "type": "uint256"
       }
     ],
     "name": "mint",

@@ -37,44 +37,44 @@ async function main() {
 	console.log(`Deployed Real Estate Contract at: ${propertyNFT.address}`);
 	console.log(`Minting 3 properties...\n`);
 
-	// for (let i = 0; i < 3; i++) {
-	// 	const transaction = await propertyNFT
-	// 		.connect(seller)
-	// 		.mint(
-	// 			`https://ipfs.io/ipfs/QmQVcpsjrA6cr1iJjZAodYwmPekYgbnXGo4DFubJiLc2EB/${
-	// 				i + 1
-	// 			}.json`
-	// 		);
-	// 	await transaction.wait();
-	// }
-
 	for (let i = 0; i < 3; i++) {
-		try {
-			let cid = folder_address
-			const propertyData = await fetchFromIPFS(cid, i)
-
-
-			const transaction = await propertyNFT
+		const transaction = await propertyNFT
 			.connect(seller)
 			.mint(
-				`http:localhost:8080/ipfs/${cid}`,
-				propertyData.name,
-				propertyData.address,
-				propertyData.description,
-				propertyData.image,
-				propertyData.attributes.find(attr => attr.trait_type === "Purchase Price").value,
-				propertyData.attributes.find(attr => attr.trait_type === "Type of Residence").value,
-				propertyData.attributes.find(attr => attr.trait_type === "Bed Rooms").value,
-				propertyData.attributes.find(attr => attr.trait_type === "Bathrooms").value,
-				propertyData.attributes.find(attr => attr.trait_type === "Square Feet").value,
-				propertyData.attributes.find(attr => attr.trait_type === "Year Built").value
+				`http://localhost:8080/ipfs/QmcAbQotFmF3MrRPfrMBLGsnXiWsUKMUs7S4ZyChWM1Hjb/${
+					i + 1
+				}.json`
 			);
-			await transaction.wait();
-			console.log(`Minted property ${i + 1}`);
-		} catch (error) {
-			console.error(`Error minting property ${i + 1}:`, error);
-		  }
+		await transaction.wait();
 	}
+
+	// for (let i = 0; i < 3; i++) {
+	// 	try {
+	// 		let cid = folder_address
+	// 		const propertyData = await fetchFromIPFS(cid, i)
+
+
+	// 		const transaction = await propertyNFT
+	// 		.connect(seller)
+	// 		.mint(
+	// 			`http:localhost:8080/ipfs/${cid}`,
+	// 			propertyData.name,
+	// 			propertyData.address,
+	// 			propertyData.description,
+	// 			propertyData.image,
+	// 			propertyData.attributes.find(attr => attr.trait_type === "Purchase Price").value,
+	// 			propertyData.attributes.find(attr => attr.trait_type === "Type of Residence").value,
+	// 			propertyData.attributes.find(attr => attr.trait_type === "Bed Rooms").value,
+	// 			propertyData.attributes.find(attr => attr.trait_type === "Bathrooms").value,
+	// 			propertyData.attributes.find(attr => attr.trait_type === "Square Feet").value,
+	// 			propertyData.attributes.find(attr => attr.trait_type === "Year Built").value
+	// 		);
+	// 		await transaction.wait();
+	// 		console.log(`Minted property ${i + 1}`);
+	// 	} catch (error) {
+	// 		console.error(`Error minting property ${i + 1}:`, error);
+	// 	  }
+	// }
 
 	// Deploy Escrow
 	const Escrow = await ethers.getContractFactory("Escrow");

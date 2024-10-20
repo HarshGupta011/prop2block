@@ -29,17 +29,7 @@ contract PropertyNFT is ERC721URIStorage {
     constructor() ERC721("Property NFT", "PRP") {}
 
     function mint(
-        string memory tokenURI,
-        string memory name,
-        string memory propertyAddress,
-        string memory description,
-        string memory image,
-        uint256 purchasePrice,
-        string memory residenceType,
-        uint256 bedrooms,
-        uint256 bathrooms,
-        uint256 squareFeet,
-        uint256 yearBuilt
+        string memory tokenURI
     ) public returns (uint256) {
         _tokenIds.increment();
 
@@ -47,22 +37,22 @@ contract PropertyNFT is ERC721URIStorage {
         _mint(msg.sender, newItemId);
         _setTokenURI(newItemId, tokenURI);
 
-        emit PropertyAddedToChain(
-            newItemId,
-            msg.sender,
-            tokenURI,
-            name,
-            propertyAddress,
-            description,
-            image,
-            purchasePrice,
-            residenceType,
-            bedrooms,
-            bathrooms,
-            squareFeet,
-            yearBuilt,
-            block.timestamp
-        );
+        // emit PropertyAddedToChain(
+        //     newItemId,
+        //     msg.sender,
+        //     tokenURI,
+        //     name,
+        //     propertyAddress,
+        //     description,
+        //     image,
+        //     purchasePrice,
+        //     residenceType,
+        //     bedrooms,
+        //     bathrooms,
+        //     squareFeet,
+        //     yearBuilt,
+        //     block.timestamp
+        // );
         return newItemId;
     }
 
