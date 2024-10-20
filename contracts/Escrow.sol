@@ -11,6 +11,7 @@ contract Escrow {
     address public inspector;
     address payable public lender;
 
+
     modifier onlyBuyer(uint256 _nftID) {
         require(msg.sender == buyer[_nftID], "Only buyer can call this method");
         _;

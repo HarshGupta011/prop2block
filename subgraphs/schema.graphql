@@ -44,3 +44,23 @@ type Transfer @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+type Home @entity {
+  id: ID!
+  owner: Bytes! # address
+  tokenURI: String!
+  name: String!
+  propertyAddress: String!
+  description: String!
+  image: String!
+  purchasePrice: BigInt!
+  residenceType: String!
+  bedrooms: BigInt!
+  bathrooms: BigInt!
+  squareFeet: BigInt!
+  yearBuilt: BigInt!
+  createdAt: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
