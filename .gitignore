@@ -10,6 +10,8 @@ data/
 /typechain
 /typechain-types
 
+data/
+
 # solidity-coverage files
 /coverage
 /coverage.json
